@@ -1,0 +1,14 @@
+{
+  "name": "prefect-eslint",
+  "version": "1.0.0",
+  "description": "eslint rules for Prefect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:PrefectHQ/eslint-rules.git"
+  },
+  "license": "ISC"
+}
