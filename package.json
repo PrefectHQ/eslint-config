@@ -1,5 +1,5 @@
 {
-  "name": "prefect-eslint",
+  "name": "@prefecthq/eslint-config",
   "version": "1.0.0",
   "description": "eslint rules for Prefect",
   "main": "index.js",
@@ -7,5 +7,16 @@
     "type": "git",
     "url": "git@github.com:PrefectHQ/eslint-rules.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "eslint": ">= 8"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-vue": "^8.0.3"
+  }
 }
