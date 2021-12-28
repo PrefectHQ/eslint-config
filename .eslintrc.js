@@ -223,5 +223,14 @@ module.exports = {
     'vue/v-on-style': 'warn',
     'vue/v-slot-style': 'warn',
     'yoda': 'warn',
-  }
+  },
+  overrides: [
+    {
+      files: ['**/*.vue'],
+      rules: {
+        'indent': 'off',
+        '@typescript-eslint/indent': 'off'
+      }
+    }
+  ]
 }
