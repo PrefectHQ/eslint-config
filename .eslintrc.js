@@ -132,7 +132,7 @@ module.exports = {
     'space-before-blocks': 'warn',
     'space-before-function-paren': ['warn', 'never'],
     'space-in-parens': 'warn',
-    'spaced-comment': 'warn',
+    'spaced-comment': ["warn", "always", { "markers": ["/"] }],
     'switch-colon-spacing': 'warn',
     'vue/array-bracket-newline': 'warn',
     'vue/array-bracket-spacing': 'warn',
