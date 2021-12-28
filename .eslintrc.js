@@ -231,6 +231,12 @@ module.exports = {
         'indent': 'off',
         '@typescript-eslint/indent': 'off'
       }
+    },
+    {
+      files: ['**/*.vue', '**/*.ts'],
+      rules: {
+        'no-extra-parens': 'off'
+      }
     }
   ]
 }
