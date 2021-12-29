@@ -10,7 +10,7 @@ module.exports = {
     '@typescript-eslint/array-type': 'warn',
     '@typescript-eslint/brace-style': ['warn', '1tbs'],
     '@typescript-eslint/class-literal-property-style': ['warn', 'fields'],
-    '@typescript-eslint/comma-dangle': ['warn', { arrays: 'always-multiline', objects: 'always-multiline', imports: 'never', exports: 'never', functions: 'never' }],
+    '@typescript-eslint/comma-dangle': ['warn', { arrays: 'always-multiline', objects: 'always-multiline', imports: 'never', exports: 'never', functions: 'always-multiline' }],
     '@typescript-eslint/comma-spacing': 'warn',
     '@typescript-eslint/consistent-indexed-object-style': ['warn', 'record'],
     '@typescript-eslint/consistent-type-exports': 'warn',
