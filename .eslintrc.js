@@ -22,7 +22,6 @@ module.exports = {
     '@typescript-eslint/member-delimiter-style': ['warn', { multiline: { delimiter: 'comma', requireLast: true }, singleline: { delimiter: 'comma', requireLast: false } }],
     '@typescript-eslint/member-ordering': 'warn',
     '@typescript-eslint/method-signature-style': ['warn', 'property'],
-    '@typescript-eslint/naming-convention': 'warn',
     '@typescript-eslint/no-base-to-string': 'warn',
     '@typescript-eslint/no-confusing-non-null-assertion': 'warn',
     '@typescript-eslint/no-duplicate-imports': 'warn',
