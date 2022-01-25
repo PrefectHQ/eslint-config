@@ -161,6 +161,7 @@ module.exports = {
     'vue/keyword-spacing': ['warn', { before: true, after: true }],
     'vue/match-component-file-name': 'warn',
     'vue/max-attributes-per-line': ['warn', { singleline: { max: 5 }, multiline: { max: 1 } }],
+    'vue/multi-word-component-names': 'warn',
     'vue/multiline-html-element-content-newline': 'warn',
     'vue/mustache-interpolation-spacing': 'warn',
     'vue/new-line-between-multi-line-property': 'warn',
