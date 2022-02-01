@@ -251,6 +251,7 @@ module.exports = {
         'no-extra-parens': 'off',
         'no-unused-expressions': 'off',
         'no-useless-constructor': 'off',
+        'default-case': 'off',
       }
     }
   ]
