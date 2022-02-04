@@ -56,6 +56,7 @@ module.exports = {
     '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     '@typescript-eslint/type-annotation-spacing': 'warn',
     '@typescript-eslint/unified-signatures': 'warn',
+    '@typescript-eslint/no-dupe-class-members': 'error',
     'array-bracket-newline': 'warn',
     'array-bracket-spacing': 'warn',
     'array-callback-return': 'warn',
@@ -252,6 +253,7 @@ module.exports = {
         'no-unused-expressions': 'off',
         'no-useless-constructor': 'off',
         'default-case': 'off',
+        'no-dupe-class-members': 'off'
       }
     }
   ]
