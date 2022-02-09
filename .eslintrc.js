@@ -236,7 +236,8 @@ module.exports = {
         'no-extra-parens': 'off',
         'no-multi-spaces': 'off',
         'no-useless-concat': 'off',
-        'no-unused-vars': 'off'
+        'no-unused-vars': 'off',
+        'func-call-spacing': 'off'
       }
     },
     {
