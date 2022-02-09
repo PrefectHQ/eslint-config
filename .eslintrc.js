@@ -236,6 +236,7 @@ module.exports = {
         'no-extra-parens': 'off',
         'no-multi-spaces': 'off',
         'no-useless-concat': 'off',
+        'no-unused-vars': 'off'
       }
     },
     {
@@ -253,7 +254,8 @@ module.exports = {
         'no-unused-expressions': 'off',
         'no-useless-constructor': 'off',
         'default-case': 'off',
-        'no-dupe-class-members': 'off'
+        'no-dupe-class-members': 'off',
+        'func-call-spacing': 'off'
       }
     }
   ]
