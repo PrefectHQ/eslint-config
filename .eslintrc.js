@@ -20,7 +20,6 @@ module.exports = {
     '@typescript-eslint/indent': ['warn', 2, { 'SwitchCase': 1 }],
     '@typescript-eslint/keyword-spacing': ['warn', { before: true, after: true }],
     '@typescript-eslint/member-delimiter-style': ['warn', { multiline: { delimiter: 'comma', requireLast: true }, singleline: { delimiter: 'comma', requireLast: false } }],
-    '@typescript-eslint/member-ordering': 'warn',
     '@typescript-eslint/method-signature-style': ['warn', 'property'],
     '@typescript-eslint/no-base-to-string': 'warn',
     '@typescript-eslint/no-confusing-non-null-assertion': 'warn',
