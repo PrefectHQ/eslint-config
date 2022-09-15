@@ -56,6 +56,7 @@ module.exports = {
     '@typescript-eslint/type-annotation-spacing': 'warn',
     '@typescript-eslint/unified-signatures': 'warn',
     '@typescript-eslint/no-dupe-class-members': 'error',
+    '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
     'array-bracket-newline': 'warn',
     'array-bracket-spacing': 'warn',
     'array-callback-return': 'warn',
