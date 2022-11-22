@@ -1,6 +1,6 @@
 {
   "name": "@prefecthq/eslint-config",
-  "version": "1.1.0-alpha.1",
+  "version": "1.1.0-alpha.2",
   "description": "eslint rules for Prefect",
   "main": "index.js",
   "repository": {
