@@ -1,6 +1,7 @@
 module.exports = {
   extends: [
     '@vue/typescript/recommended',
+    'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
@@ -23,6 +24,7 @@ module.exports = {
     '@typescript-eslint/method-signature-style': ['warn', 'property'],
     '@typescript-eslint/no-base-to-string': 'warn',
     '@typescript-eslint/no-confusing-non-null-assertion': 'warn',
+    '@typescript-eslint/no-dupe-class-members': 'error',
     '@typescript-eslint/no-duplicate-imports': 'warn',
     '@typescript-eslint/no-extra-parens': 'warn',
     '@typescript-eslint/no-floating-promises': 'off',
@@ -55,14 +57,13 @@ module.exports = {
     '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     '@typescript-eslint/type-annotation-spacing': 'warn',
     '@typescript-eslint/unified-signatures': 'warn',
-    '@typescript-eslint/no-dupe-class-members': 'error',
     'array-bracket-newline': 'warn',
     'array-bracket-spacing': 'warn',
     'array-callback-return': 'warn',
     'arrow-spacing': 'warn',
     'brace-style': ['warn', '1tbs'],
     'camelcase': 'warn',
-    'comma-dangle': ['warn', { arrays: 'always-multiline', objects: 'always-multiline', imports: 'never', exports: 'never', functions: 'never' }],
+    'comma-dangle': ['warn', { arrays: 'always-multiline', objects: 'always-multiline', imports: 'never', exports: 'never', functions: 'always-multiline' }],
     'comma-spacing': 'warn',
     'curly': 'warn',
     'default-case-last': 'warn',
@@ -70,7 +71,7 @@ module.exports = {
     'dot-location': ['warn', 'property'],
     'dot-notation': 'warn',
     'func-call-spacing': 'warn',
-    'id-length': ['warn', { exceptions: ['x', 'i'] }],
+    'id-length': ['warn', { exceptions: ['x', 'y', 'i'] }],
     'implicit-arrow-linebreak': 'warn',
     'import/no-unresolved': 'warn',
     'import/order': ['warn', { 'alphabetize': { 'order': 'asc', 'caseInsensitive': true } }],
@@ -125,6 +126,7 @@ module.exports = {
     'space-before-blocks': 'warn',
     'space-before-function-paren': ['warn', {anonymous: 'never', named: 'never', asyncArrow: 'always'}],
     'space-in-parens': 'warn',
+    'space-infix-ops': 'warn',
     'spaced-comment': ["warn", "always", { "markers": ["/"] }],
     'switch-colon-spacing': 'warn',
     'vue/array-bracket-newline': 'warn',
@@ -223,40 +225,9 @@ module.exports = {
       files: ['**/*.vue'],
       rules: {
         '@typescript-eslint/indent': 'off',
-        'array-bracket-spacing': 'off',
-        'arrow-spacing': 'off',
-        'brace-style': 'off',
-        'comma-dangle': 'off',
-        'camelcase': 'off',
-        'comma-spacing': 'off',
         'indent': 'off',
-        'key-spacing': 'off',
-        'keyword-spacing': 'off',
-        'no-extra-parens': 'off',
-        'no-multi-spaces': 'off',
-        'no-useless-concat': 'off',
-        'no-unused-vars': 'off',
-        'func-call-spacing': 'off'
+        'func-call-spacing': 'off',
       }
     },
-    {
-      files: ['**/*.ts'],
-      rules: {
-        'brace-style': 'off',
-        'comma-dangle': 'off',
-        'comma-spacing': 'off',
-        'indent': 'off',
-        'keyword-spacing': 'off',
-        'no-unused-vars': 'off',
-        'space-before-function-paren': 'off',
-        'no-duplicate-imports': 'off',
-        'no-extra-parens': 'off',
-        'no-unused-expressions': 'off',
-        'no-useless-constructor': 'off',
-        'default-case': 'off',
-        'no-dupe-class-members': 'off',
-        'func-call-spacing': 'off'
-      }
-    }
   ]
 }
