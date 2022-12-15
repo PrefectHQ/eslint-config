@@ -8,7 +8,7 @@ module.exports = {
     'plugin:vue/vue3-essential',
   ],
   plugins: [
-    "no-relative-import-paths",
+    'no-relative-import-paths',
   ],
   rules: {
     '@typescript-eslint/array-type': 'warn',
