@@ -9,6 +9,7 @@ module.exports = {
   ],
   plugins: [
     'no-relative-import-paths',
+    'only-warn',
   ],
   rules: {
     '@typescript-eslint/array-type': 'warn',
