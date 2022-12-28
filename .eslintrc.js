@@ -98,7 +98,7 @@ module.exports = {
     'no-multi-spaces': 'warn',
     'no-multiple-empty-lines': 'warn',
     'no-nested-ternary': 'error',
-    'no-redeclare': ['warn', {ignoreDeclarationMerge: true}],
+    'no-redeclare': 'off',
     'no-relative-import-paths/no-relative-import-paths': ['warn', { rootDir: 'src', prefix: '@' }],
     'no-self-compare': 'warn',
     'no-tabs': 'warn',
