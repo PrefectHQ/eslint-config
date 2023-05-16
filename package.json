@@ -14,12 +14,12 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/eslint-config-typescript": "^11.0.3",
     "eslint-import-resolver-typescript": "^3.5.4",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-no-relative-import-paths": "^1.5.2",
     "eslint-plugin-only-warn": "^1.1.0",
-    "eslint-plugin-vue": "^9.10.0",
-    "vue-eslint-parser": "^9.1.0"
+    "eslint-plugin-vue": "^9.13.0",
+    "vue-eslint-parser": "^9.3.0"
   }
 }
