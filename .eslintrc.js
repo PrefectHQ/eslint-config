@@ -236,5 +236,12 @@ module.exports = {
         'func-call-spacing': 'off',
       }
     },
+    {
+      files: ['**/*.ts', '**/*.vue'],
+      rules: {
+        'no-case-declarations': 'off',
+        'default-case': 'off'
+      }
+    }
   ]
 }
