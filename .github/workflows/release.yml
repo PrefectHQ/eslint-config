@@ -6,27 +6,41 @@ on:
       - package.json
     branches:
       - main
-
+      
 jobs:
 
-  publish:
-    name: Publish Release
+  build-and-publish:
+    name: Build & Publish Release
     runs-on: ubuntu-latest
+    environment: 'prod'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
           node-version-file: ".nvmrc"
+      
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Get Package Version
-        uses: EndBug/version-check@v2.1.0
-        id: version
+      - name: Build package
+        run: npm run build
 
       - name: Publish Package
         id: publish
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v2
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
+          strategy: upgrade
+      
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.publish.outputs.version }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="Release ${tag#v}" \
+              --generate-notes
