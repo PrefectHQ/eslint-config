@@ -40,6 +40,6 @@ jobs:
         name: Trigger Downstream NPM Package Update for ${{ matrix.downstream-repos }}
         id: trigger-downstream-npm-package-update
         with:
-          GITHUB_TOKEN: ${{ secrets.PREFECT_ACTIONS_RW }}
+          GITHUB_TOKEN: ${{ secrets.PREFECT_UI_COMPONENTS_ACTIONS_RW }}
           DOWNSTREAM_REPO_NAME: ${{ matrix.downstream-repos }}
           RELEASE_TAG: ${{ needs.build-and-publish.outputs.version }}
