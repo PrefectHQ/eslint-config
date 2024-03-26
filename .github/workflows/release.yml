@@ -24,18 +24,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SKIP_BUILD: 'true'
 
+    outputs:
+      type: ${{ steps.release-ui-components.outputs.type }}
+      version: ${{ steps.release-ui-components.outputs.version }}
+  update-downstream-repos:
+    name: Update Downstream Repos
+    runs-on: ubuntu-latest
+    needs: build-and-publish
+    if: ${{ needs.build-and-publish.outputs.type }}
+    strategy:
+      matrix:
+        downstream-repos: [graphs, nebula-ui, prefect, prefect-design, prefect-ui-library, vue-charts, vue-compositions]
+    steps:
       - uses: prefecthq/actions-trigger-downstream-npm-package-updates@main
-        id: trigger-downstream-npm-package-update-nebula-ui
-        if: ${{ steps.release-ui-components.outputs.type }}
-        with:
-          GITHUB_TOKEN: ${{ secrets.NEBULA_UI_ACTIONS_RW }}
-          DOWNSTREAM_REPO_NAME: nebula-ui
-          RELEASE_TAG: ${{ steps.release-ui-components.outputs.version}}
-
-      - uses: prefecthq/actions-trigger-downstream-npm-package-updates@main
-        id: trigger-downstream-npm-package-update-prefect-oss
-        if: ${{ steps.release-ui-components.outputs.type }}
+        name: Trigger Downstream NPM Package Update for ${{ matrix.downstream-repos }}
+        id: trigger-downstream-npm-package-update
         with:
           GITHUB_TOKEN: ${{ secrets.PREFECT_ACTIONS_RW }}
-          DOWNSTREAM_REPO_NAME: prefect
-          RELEASE_TAG: ${{ steps.release-ui-components.outputs.version}}
+          DOWNSTREAM_REPO_NAME: ${{ matrix.downstream-repos }}
+          RELEASE_TAG: ${{ needs.build-and-publish.outputs.version }}
