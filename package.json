@@ -2,6 +2,10 @@
   "name": "@prefecthq/eslint-config",
   "version": "1.0.32",
   "description": "eslint rules for Prefect",
+  "scripts": {
+    "version": "npm run changelog && git add CHANGELOG.md",
+    "release": "./eslint-config-release"
+  },
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -15,6 +19,7 @@
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
     "@vue/eslint-config-typescript": "^13.0.0",
+    "auto-changelog": "^2.4.0",
     "eslint-import-resolver-typescript": "^3.5.4",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-no-relative-import-paths": "^1.5.2",
