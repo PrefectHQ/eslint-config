@@ -29,7 +29,7 @@ jobs:
         id: release-ui-components
         with:
           NPM_TOKEN: ${{ secrets.PREFECT_UI_COMPONENTS_NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.PREFECT_CONTENTS_PR_RW }}
+          GITHUB_TOKEN: ${{ secrets.UI_COMPONENTS_CONTENTS_PRS_RW }}
           RELEASE_TYPE: ${{ inputs.release_type }}
           SKIP_BUILD: 'true'
 
@@ -49,6 +49,6 @@ jobs:
         name: Trigger Downstream NPM Package Update for ${{ matrix.downstream-repos }}
         id: trigger-downstream-npm-package-update
         with:
-          GITHUB_TOKEN: ${{ secrets.PREFECT_UI_COMPONENTS_ACTIONS_RW }}
+          GITHUB_TOKEN: ${{ secrets.UI_COMPONENTS_ACTIONS_RW }}
           DOWNSTREAM_REPO_NAME: ${{ matrix.downstream-repos }}
           RELEASE_TAG: ${{ needs.build-and-publish.outputs.version }}
