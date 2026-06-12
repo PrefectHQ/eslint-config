@@ -25,30 +25,71 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
+      - name: Generate prefect-ci-bot-public token
+        id: app_token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.PREFECT_CI_BOT_PUBLIC_CLIENT_ID }}
+          private-key: ${{ secrets.PREFECT_CI_BOT_PUBLIC_PRIVATE_KEY }}
+
       - uses: prefecthq/actions-release-ui-components@main
         id: release-ui-components
         with:
           NPM_TOKEN: ${{ secrets.PREFECT_UI_COMPONENTS_NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.UI_COMPONENTS_CONTENTS_PRS_RW }}
+          GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
           RELEASE_TYPE: ${{ inputs.release_type }}
           SKIP_BUILD: 'true'
 
     outputs:
       type: ${{ steps.release-ui-components.outputs.type }}
       version: ${{ steps.release-ui-components.outputs.version }}
-  update-downstream-repos:
-    name: Update Downstream Repos
+
+  # Public downstream targets - use prefect-ci-bot-public.
+  update-public-downstream-repos:
+    name: Update Public Downstream Repos
     runs-on: ubuntu-latest
     needs: build-and-publish
     if: ${{ needs.build-and-publish.outputs.type }}
     strategy:
       matrix:
-        downstream-repos: [graphs, nebula-ui, prefect, prefect-design, prefect-ui-library, vue-charts, vue-compositions]
+        downstream-repos: [graphs, prefect, prefect-design, prefect-ui-library, vue-charts, vue-compositions]
     steps:
+      - name: Generate prefect-ci-bot-public token
+        id: app_token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.PREFECT_CI_BOT_PUBLIC_CLIENT_ID }}
+          private-key: ${{ secrets.PREFECT_CI_BOT_PUBLIC_PRIVATE_KEY }}
+          owner: PrefectHQ
+          repositories: ${{ matrix.downstream-repos }}
       - uses: prefecthq/actions-trigger-downstream-npm-package-updates@main
         name: Trigger Downstream NPM Package Update for ${{ matrix.downstream-repos }}
         id: trigger-downstream-npm-package-update
         with:
-          GITHUB_TOKEN: ${{ secrets.UI_COMPONENTS_ACTIONS_RW }}
+          GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
           DOWNSTREAM_REPO_NAME: ${{ matrix.downstream-repos }}
+          RELEASE_TAG: ${{ needs.build-and-publish.outputs.version }}
+
+  # nebula-ui is internal - use prefect-ci-bot-bridge so a leaked public-repo
+  # token cannot read internal source. Bridge has only actions:write +
+  # contents:write + pull_requests:write + metadata:read.
+  update-internal-downstream-nebula-ui:
+    name: Update nebula-ui via bridge
+    runs-on: ubuntu-latest
+    needs: build-and-publish
+    if: ${{ needs.build-and-publish.outputs.type }}
+    steps:
+      - name: Generate prefect-ci-bot-bridge token
+        id: app_token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.PREFECT_CI_BOT_BRIDGE_CLIENT_ID }}
+          private-key: ${{ secrets.PREFECT_CI_BOT_BRIDGE_PRIVATE_KEY }}
+          owner: PrefectHQ
+          repositories: nebula-ui
+      - uses: prefecthq/actions-trigger-downstream-npm-package-updates@main
+        id: trigger-downstream-npm-package-update-nebula-ui
+        with:
+          GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
+          DOWNSTREAM_REPO_NAME: nebula-ui
           RELEASE_TAG: ${{ needs.build-and-publish.outputs.version }}
